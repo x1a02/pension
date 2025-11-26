@@ -1,0 +1,49 @@
+<view class="container">
+  <navigation-bar title="活动详情" color="black" background="#FFF"></navigation-bar>
+
+  <scroll-view class="scrollarea" scroll-y type="list">
+    <view class="content" wx:if="{{activity}}">
+      <!-- 活动顶部卡片 -->
+      <view class="activity-header">
+        <view class="header-badge">
+          <text class="badge-icon">🎉</text>
+        </view>
+        <text class="activity-name">{{activity.activityName}}</text>
+        <view class="participants-info">
+          <text class="participants-text">已报名</text>
+          <text class="participants-count">{{activity.currentParticipants}}/{{activity.maxParticipants}}人</text>
+        </view>
+      </view>
+
+      <!-- 活动信息卡片 -->
+      <view class="info-card">
+        <view class="info-item">
+          <view class="info-icon info-icon-time"></view>
+          <view class="info-content">
+            <text class="info-label">活动时间</text>
+            <text class="info-value">{{activity.activityDate}}</text>
+          </view>
+        </view>
+
+        <view class="info-item">
+          <view class="info-icon info-icon-location"></view>
+          <view class="info-content">
+            <text class="info-label">活动地点</text>
+            <text class="info-value">{{activity.location}}</text>
+          </view>
+        </view>
+
+        <view class="info-item">
+          <view class="info-icon info-icon-desc"></view>
+          <view class="info-content">
+            <text class="info-label">活动介绍</text>
+            <text class="info-value desc">{{activity.activityDesc}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 报名按钮 -->
+      <button class="register-btn" bindtap="handleRegister">立即报名</button>
+    </view>
+  </scroll-view>
+</view>

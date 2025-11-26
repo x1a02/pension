@@ -1,0 +1,42 @@
+<view class="container">
+  <navigation-bar title="服务项目" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+  <scroll-view class="scrollarea" scroll-y type="list">
+    <view class="service-list">
+      <view class="service-card" wx:for="{{serviceList}}" wx:key="id" bindtap="viewDetail" data-id="{{item.id}}">
+        <view class="card-header">
+          <text class="service-icon">🏥</text>
+          <view class="header-content">
+            <text class="service-name">{{item.serviceName}}</text>
+            <text class="service-category">养老服务</text>
+          </view>
+          <view class="price-tag">
+            <text class="price-symbol">¥</text>
+            <text class="price-value">{{item.price}}</text>
+          </view>
+        </view>
+
+        <view class="card-body">
+          <text class="service-desc">{{item.serviceDesc}}</text>
+        </view>
+
+        <view class="card-footer">
+          <view class="service-meta">
+            <view class="meta-item">
+              <text class="meta-icon">⏱️</text>
+              <text class="meta-text">{{item.duration}}分钟</text>
+            </view>
+          </view>
+          <view class="book-btn">
+            <text>立即预约</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="empty" wx:if="{{serviceList.length === 0}}">
+        <text class="empty-icon">📋</text>
+        <text class="empty-text">暂无服务项目</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

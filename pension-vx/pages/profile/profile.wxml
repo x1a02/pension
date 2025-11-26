@@ -1,0 +1,55 @@
+<view class="container">
+  <navigation-bar title="我的" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+  <scroll-view class="scrollarea" scroll-y type="list">
+    <view class="content">
+
+      <!-- 个人信息头部 - 缩小版 -->
+      <view class="profile-header">
+        <view class="avatar-circle">
+          <text class="avatar-text">{{userInfo.realName.substring(0, 1)}}</text>
+        </view>
+        <view class="profile-info">
+          <text class="profile-name">{{userInfo.realName}}</text>
+          <text class="profile-role">{{userInfo.userType === 1 ? '系统管理员' : userInfo.userType === 2 ? '工作人员' : '家属成员'}}</text>
+        </view>
+      </view>
+
+      <!-- 基本信息卡片 -->
+      <view class="info-card">
+        <view class="info-row">
+          <text class="info-label">账号</text>
+          <text class="info-value">{{userInfo.username}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">手机号</text>
+          <text class="info-value">{{userInfo.phone}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">状态</text>
+          <view class="status-badge status-{{userInfo.status}}">
+            <text>{{userInfo.status === 1 ? '正常' : '禁用'}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 功能菜单 -->
+      <view class="menu-list">
+        <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="handleMenuItem" data-id="{{item.id}}">
+          <view class="menu-icon menu-icon-{{item.icon}}"></view>
+          <text class="menu-title">{{item.title}}</text>
+          <view class="menu-right">
+            <text class="badge" wx:if="{{item.badge > 0}}">{{item.badge}}</text>
+            <view class="menu-arrow"></view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 退出登录按钮 -->
+      <view class="logout-wrapper">
+        <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>

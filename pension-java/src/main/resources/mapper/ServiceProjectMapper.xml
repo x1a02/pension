@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.x1a02.pension.mapper.ServiceProjectMapper">
+
+    <resultMap id="BaseResultMap" type="com.x1a02.pension.entity.ServiceProject">
+        <id column="id" property="id"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="service_name" property="serviceName"/>
+        <result column="service_desc" property="serviceDesc"/>
+        <result column="duration" property="duration"/>
+        <result column="price" property="price"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.x1a02.pension.entity.ServiceProject" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_service_project (category_id, service_name, service_desc, duration, price, status)
+        VALUES (#{categoryId}, #{serviceName}, #{serviceDesc}, #{duration}, #{price}, #{status})
+    </insert>
+
+    <update id="update" parameterType="com.x1a02.pension.entity.ServiceProject">
+        UPDATE tb_service_project
+        <set>
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="serviceName != null">service_name = #{serviceName},</if>
+            <if test="serviceDesc != null">service_desc = #{serviceDesc},</if>
+            <if test="duration != null">duration = #{duration},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM tb_service_project WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_project WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_project WHERE status = 1 ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByCategoryId" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_project WHERE category_id = #{categoryId} AND status = 1 ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByPage" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_project WHERE status = 1 ORDER BY create_time DESC LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countAll" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM tb_service_project WHERE status = 1
+    </select>
+
+</mapper>

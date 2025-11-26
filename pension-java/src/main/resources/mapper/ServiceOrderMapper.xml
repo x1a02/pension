@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.x1a02.pension.mapper.ServiceOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.x1a02.pension.entity.ServiceOrder">
+        <id column="id" property="id"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="elderly_id" property="elderlyId"/>
+        <result column="service_id" property="serviceId"/>
+        <result column="staff_id" property="staffId"/>
+        <result column="appointment_time" property="appointmentTime"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="completion_time" property="completionTime"/>
+        <result column="completion_notes" property="completionNotes"/>
+        <result column="rating" property="rating"/>
+        <result column="feedback" property="feedback"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.x1a02.pension.entity.ServiceOrder" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_service_order (order_no, elderly_id, service_id, staff_id, appointment_time, order_status)
+        VALUES (#{orderNo}, #{elderlyId}, #{serviceId}, #{staffId}, #{appointmentTime}, #{orderStatus})
+    </insert>
+
+    <update id="update" parameterType="com.x1a02.pension.entity.ServiceOrder">
+        UPDATE tb_service_order
+        <set>
+            <if test="staffId != null">staff_id = #{staffId},</if>
+            <if test="appointmentTime != null">appointment_time = #{appointmentTime},</if>
+            <if test="orderStatus != null">order_status = #{orderStatus},</if>
+            <if test="completionTime != null">completion_time = #{completionTime},</if>
+            <if test="completionNotes != null">completion_notes = #{completionNotes},</if>
+            <if test="rating != null">rating = #{rating},</if>
+            <if test="feedback != null">feedback = #{feedback},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM tb_service_order WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_order WHERE id = #{id}
+    </select>
+
+    <select id="selectByOrderNo" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_order WHERE order_no = #{orderNo}
+    </select>
+
+    <select id="selectByElderlyId" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_order WHERE elderly_id = #{elderlyId} ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByStaffId" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_order WHERE staff_id = #{staffId} ORDER BY appointment_time DESC
+    </select>
+
+    <select id="selectByStatus" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_order WHERE order_status = #{status} ORDER BY appointment_time ASC
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM tb_service_order ORDER BY create_time DESC
+    </select>
+
+</mapper>

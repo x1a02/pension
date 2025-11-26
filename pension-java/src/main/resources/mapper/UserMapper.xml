@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.x1a02.pension.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.x1a02.pension.entity.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="real_name" property="realName"/>
+        <result column="phone" property="phone"/>
+        <result column="user_type" property="userType"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.x1a02.pension.entity.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_user (username, password, real_name, phone, user_type, status)
+        VALUES (#{username}, #{password}, #{realName}, #{phone}, #{userType}, #{status})
+    </insert>
+
+    <update id="update" parameterType="com.x1a02.pension.entity.User">
+        UPDATE tb_user
+        <set>
+            <if test="password != null">password = #{password},</if>
+            <if test="realName != null">real_name = #{realName},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="userType != null">user_type = #{userType},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM tb_user WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM tb_user WHERE id = #{id}
+    </select>
+
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        SELECT * FROM tb_user WHERE username = #{username}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM tb_user WHERE status = 1 ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByUserType" resultMap="BaseResultMap">
+        SELECT * FROM tb_user WHERE user_type = #{userType} AND status = 1 ORDER BY create_time DESC
+    </select>
+
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.x1a02.pension.mapper.ActivityMapper">
+
+    <resultMap id="BaseResultMap" type="com.x1a02.pension.entity.Activity">
+        <id column="id" property="id"/>
+        <result column="activity_name" property="activityName"/>
+        <result column="activity_desc" property="activityDesc"/>
+        <result column="activity_date" property="activityDate"/>
+        <result column="location" property="location"/>
+        <result column="max_participants" property="maxParticipants"/>
+        <result column="current_participants" property="currentParticipants"/>
+        <result column="organizer_id" property="organizerId"/>
+        <result column="cover_image" property="coverImage"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.x1a02.pension.entity.Activity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_activity (activity_name, activity_desc, activity_date, location,
+            max_participants, current_participants, organizer_id, cover_image, status)
+        VALUES (#{activityName}, #{activityDesc}, #{activityDate}, #{location},
+            #{maxParticipants}, #{currentParticipants}, #{organizerId}, #{coverImage}, #{status})
+    </insert>
+
+    <update id="update" parameterType="com.x1a02.pension.entity.Activity">
+        UPDATE tb_activity
+        <set>
+            <if test="activityName != null">activity_name = #{activityName},</if>
+            <if test="activityDesc != null">activity_desc = #{activityDesc},</if>
+            <if test="activityDate != null">activity_date = #{activityDate},</if>
+            <if test="location != null">location = #{location},</if>
+            <if test="maxParticipants != null">max_participants = #{maxParticipants},</if>
+            <if test="currentParticipants != null">current_participants = #{currentParticipants},</if>
+            <if test="organizerId != null">organizer_id = #{organizerId},</if>
+            <if test="coverImage != null">cover_image = #{coverImage},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM tb_activity WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM tb_activity WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM tb_activity ORDER BY activity_date DESC
+    </select>
+
+    <select id="selectByStatus" resultMap="BaseResultMap">
+        SELECT * FROM tb_activity WHERE status = #{status} ORDER BY activity_date DESC
+    </select>
+
+    <select id="selectUpcoming" resultMap="BaseResultMap">
+        SELECT * FROM tb_activity WHERE status = 1 AND activity_date >= NOW() ORDER BY activity_date ASC
+    </select>
+
+    <update id="updateParticipantCount">
+        UPDATE tb_activity
+        SET current_participants = current_participants + #{increment}
+        WHERE id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,75 @@
+<view class="container">
+  <navigation-bar title="健康记录" color="black" background="#FFF"></navigation-bar>
+
+  <scroll-view class="scrollarea" scroll-y type="list">
+    <view class="health-list">
+      <view class="health-card" wx:for="{{healthRecords}}" wx:key="id">
+        <view class="card-header">
+          <text class="date-icon">📅</text>
+          <text class="health-date">{{item.recordDate}}</text>
+          <text class="data-source">{{item.dataSource === 1 ? '手动录入' : '设备采集'}}</text>
+        </view>
+
+        <view class="health-data">
+          <view class="data-grid">
+            <view class="data-cell" wx:if="{{item.bloodPressure}}">
+              <text class="cell-icon">❤️</text>
+              <view class="cell-content">
+                <text class="cell-label">血压</text>
+                <text class="cell-value">{{item.bloodPressure}}</text>
+                <text class="cell-unit">mmHg</text>
+              </view>
+            </view>
+
+            <view class="data-cell" wx:if="{{item.heartRate}}">
+              <text class="cell-icon">💓</text>
+              <view class="cell-content">
+                <text class="cell-label">心率</text>
+                <text class="cell-value">{{item.heartRate}}</text>
+                <text class="cell-unit">次/分</text>
+              </view>
+            </view>
+
+            <view class="data-cell" wx:if="{{item.bloodSugar}}">
+              <text class="cell-icon">🩸</text>
+              <view class="cell-content">
+                <text class="cell-label">血糖</text>
+                <text class="cell-value">{{item.bloodSugar}}</text>
+                <text class="cell-unit">mmol/L</text>
+              </view>
+            </view>
+
+            <view class="data-cell" wx:if="{{item.temperature}}">
+              <text class="cell-icon">🌡️</text>
+              <view class="cell-content">
+                <text class="cell-label">体温</text>
+                <text class="cell-value">{{item.temperature}}</text>
+                <text class="cell-unit">°C</text>
+              </view>
+            </view>
+
+            <view class="data-cell" wx:if="{{item.weight}}">
+              <text class="cell-icon">⚖️</text>
+              <view class="cell-content">
+                <text class="cell-label">体重</text>
+                <text class="cell-value">{{item.weight}}</text>
+                <text class="cell-unit">kg</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="notes-section" wx:if="{{item.notes}}">
+            <text class="notes-label">备注</text>
+            <text class="notes-text">{{item.notes}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="empty" wx:if="{{healthRecords.length === 0}}">
+        <text class="empty-icon">📊</text>
+        <text class="empty-text">暂无健康记录</text>
+        <text class="empty-hint">请添加健康数据以便更好地关注老人健康</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

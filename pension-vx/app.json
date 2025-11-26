@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/elderly/list/list",
+    "pages/elderly/detail/detail",
+    "pages/service/list/list",
+    "pages/service/detail/detail",
+    "pages/health/list/list",
+    "pages/activity/list/list",
+    "pages/activity/detail/detail",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "backgroundColor": "#FFFBF5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FFA726",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/elderly/list/list",
+        "text": "老人"
+      },
+      {
+        "pagePath": "pages/service/list/list",
+        "text": "服务"
+      },
+      {
+        "pagePath": "pages/activity/list/list",
+        "text": "活动"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

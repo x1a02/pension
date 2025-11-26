@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.x1a02.pension.mapper.ElderlyMapper">
+
+    <resultMap id="BaseResultMap" type="com.x1a02.pension.entity.Elderly">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="gender" property="gender"/>
+        <result column="id_card" property="idCard"/>
+        <result column="birth_date" property="birthDate"/>
+        <result column="age" property="age"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+        <result column="emergency_contact" property="emergencyContact"/>
+        <result column="emergency_phone" property="emergencyPhone"/>
+        <result column="health_status" property="healthStatus"/>
+        <result column="photo_url" property="photoUrl"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.x1a02.pension.entity.Elderly" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_elderly (name, gender, id_card, birth_date, age, phone, address,
+            emergency_contact, emergency_phone, health_status, photo_url, status)
+        VALUES (#{name}, #{gender}, #{idCard}, #{birthDate}, #{age}, #{phone}, #{address},
+            #{emergencyContact}, #{emergencyPhone}, #{healthStatus}, #{photoUrl}, #{status})
+    </insert>
+
+    <update id="update" parameterType="com.x1a02.pension.entity.Elderly">
+        UPDATE tb_elderly
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="idCard != null">id_card = #{idCard},</if>
+            <if test="birthDate != null">birth_date = #{birthDate},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="emergencyContact != null">emergency_contact = #{emergencyContact},</if>
+            <if test="emergencyPhone != null">emergency_phone = #{emergencyPhone},</if>
+            <if test="healthStatus != null">health_status = #{healthStatus},</if>
+            <if test="photoUrl != null">photo_url = #{photoUrl},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM tb_elderly WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM tb_elderly WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM tb_elderly WHERE status = 1 ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByPage" resultMap="BaseResultMap">
+        SELECT * FROM tb_elderly WHERE status = 1 ORDER BY create_time DESC LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countAll" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM tb_elderly WHERE status = 1
+    </select>
+
+    <select id="selectByName" resultMap="BaseResultMap">
+        SELECT * FROM tb_elderly WHERE name LIKE CONCAT('%', #{name}, '%') AND status = 1
+    </select>
+
+    <select id="selectByIdCard" resultMap="BaseResultMap">
+        SELECT * FROM tb_elderly WHERE id_card = #{idCard}
+    </select>
+
+</mapper>

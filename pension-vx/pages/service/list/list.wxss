@@ -1,0 +1,155 @@
+/* 服务项目列表 - 温馨适老化设计 */
+
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary-bg);
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.container {
+  height: 100%;
+}
+
+/* 服务列表 */
+.service-list {
+  padding: 20rpx 24rpx 40rpx;
+}
+
+.service-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(255, 167, 38, 0.08);
+  border: 2rpx solid #F5E6D3;
+}
+
+/* 卡片头部 */
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 32rpx;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFFBF5 100%);
+  border-bottom: 2rpx dashed #F5E6D3;
+}
+
+.service-icon {
+  font-size: 56rpx;
+  margin-right: 20rpx;
+}
+
+.header-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.service-category {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.price-tag {
+  display: flex;
+  align-items: baseline;
+  background: linear-gradient(135deg, #FFA726 0%, #FF9800 100%);
+  padding: 16rpx 24rpx;
+  border-radius: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(255, 167, 38, 0.25);
+}
+
+.price-symbol {
+  font-size: 24rpx;
+  color: #FFFFFF;
+  font-weight: 500;
+  margin-right: 4rpx;
+}
+
+.price-value {
+  font-size: 36rpx;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* 卡片主体 */
+.card-body {
+  padding: 28rpx 32rpx;
+}
+
+.service-desc {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.7;
+}
+
+/* 卡片底部 */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 32rpx;
+  background: #FFFBF5;
+  border-top: 2rpx dashed #F5E6D3;
+}
+
+.service-meta {
+  display: flex;
+  gap: 24rpx;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.meta-icon {
+  font-size: 32rpx;
+  margin-right: 8rpx;
+}
+
+.meta-text {
+  font-size: 26rpx;
+  color: #666666;
+  font-weight: 500;
+}
+
+.book-btn {
+  background: linear-gradient(135deg, #FFA726 0%, #FF9800 100%);
+  color: #FFFFFF;
+  padding: 16rpx 40rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(255, 167, 38, 0.2);
+}
+
+/* 空状态 */
+.empty {
+  text-align: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  display: block;
+  font-size: 120rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  display: block;
+  font-size: 30rpx;
+  color: #999999;
+}

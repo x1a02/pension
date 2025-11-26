@@ -1,0 +1,242 @@
+/* 活动详情页 - 温馨适老化设计 */
+
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary-bg);
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.container {
+  height: 100%;
+}
+
+.content {
+  padding: 24rpx;
+}
+
+/* 活动顶部卡片 */
+.activity-header {
+  background: linear-gradient(135deg, #FFE8DD 0%, #FFD4C4 100%);
+  border-radius: var(--radius-large);
+  padding: 48rpx 40rpx;
+  margin-bottom: 24rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(255, 127, 80, 0.15);
+  border: 1rpx solid var(--border-color);
+  position: relative;
+}
+
+.header-badge {
+  width: 96rpx;
+  height: 96rpx;
+  margin: 0 auto 24rpx;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 20rpx rgba(255, 127, 80, 0.3);
+}
+
+.badge-icon {
+  font-size: 56rpx;
+}
+
+.activity-name {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 24rpx;
+  line-height: 1.4;
+}
+
+.participants-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 12rpx;
+  background: rgba(255, 127, 80, 0.1);
+  padding: 12rpx 28rpx;
+  border-radius: 32rpx;
+  border: 1rpx solid rgba(255, 127, 80, 0.2);
+}
+
+.participants-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.participants-count {
+  font-size: 28rpx;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* 信息卡片 */
+.info-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-medium);
+  padding: 40rpx 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: var(--shadow);
+  border: 1rpx solid var(--border-color);
+}
+
+.info-item {
+  display: flex;
+  gap: 24rpx;
+  padding: 24rpx 0;
+  border-bottom: 1rpx dashed var(--border-color);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.info-item:first-child {
+  padding-top: 0;
+}
+
+/* CSS图标 */
+.info-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* 时间图标 */
+.info-icon-time {
+  background: linear-gradient(135deg, #42A5F5 0%, #1976D2 100%);
+}
+
+.info-icon-time::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32rpx;
+  height: 32rpx;
+  border: 3rpx solid white;
+  border-radius: 50%;
+}
+
+.info-icon-time::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rpx;
+  height: 12rpx;
+  background: white;
+  margin-top: -6rpx;
+}
+
+/* 地点图标 */
+.info-icon-location {
+  background: linear-gradient(135deg, #66BB6A 0%, #4CAF50 100%);
+}
+
+.info-icon-location::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: 20rpx;
+  height: 28rpx;
+  background: white;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg) translate(-8rpx, -8rpx);
+}
+
+.info-icon-location::after {
+  content: '';
+  position: absolute;
+  top: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 8rpx;
+  background: #66BB6A;
+  border-radius: 50%;
+}
+
+/* 描述图标 */
+.info-icon-desc {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+.info-icon-desc::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28rpx;
+  height: 3rpx;
+  background: white;
+  box-shadow: 0 -8rpx 0 white, 0 8rpx 0 white;
+}
+
+/* 信息内容 */
+.info-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rpx;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 30rpx;
+  color: var(--text-color);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.info-value.desc {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* 报名按钮 */
+.register-btn {
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: #FFFFFF;
+  border-radius: 48rpx;
+  font-size: 34rpx;
+  font-weight: 500;
+  box-shadow: 0 6rpx 20rpx rgba(255, 127, 80, 0.3);
+  border: none;
+}
+
+.register-btn::after {
+  border: none;
+}
+
+.register-btn:active {
+  opacity: 0.9;
+  transform: translateY(2rpx);
+}

@@ -1,0 +1,132 @@
+/* 服务详情页 - 温馨适老化设计 */
+
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary-bg);
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.container {
+  height: 100%;
+}
+
+.content {
+  padding: 24rpx;
+}
+
+/* 服务顶部卡片 */
+.service-header {
+  background: linear-gradient(135deg, #FFE8DD 0%, #FFD4C4 100%);
+  border-radius: var(--radius-large);
+  padding: 48rpx 40rpx;
+  margin-bottom: 24rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(255, 127, 80, 0.15);
+  border: 1rpx solid var(--border-color);
+  position: relative;
+}
+
+.service-name {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 24rpx;
+  line-height: 1.4;
+}
+
+.service-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8rpx;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  padding: 16rpx 40rpx;
+  border-radius: 48rpx;
+  box-shadow: 0 4rpx 16rpx rgba(255, 127, 80, 0.25);
+}
+
+.price-symbol {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.price-value {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.price-unit {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 信息卡片 */
+.service-info {
+  background: var(--card-bg);
+  border-radius: var(--radius-medium);
+  padding: 40rpx 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: var(--shadow);
+  border: 1rpx solid var(--border-color);
+}
+
+.info-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx dashed var(--border-color);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.info-item:first-child {
+  padding-top: 0;
+}
+
+.label {
+  display: block;
+  font-size: 26rpx;
+  color: var(--text-light);
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+.value {
+  display: block;
+  font-size: 30rpx;
+  color: var(--text-color);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* 预约按钮 */
+.book-btn {
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: #FFFFFF;
+  border-radius: 48rpx;
+  font-size: 34rpx;
+  font-weight: 500;
+  box-shadow: 0 6rpx 20rpx rgba(255, 127, 80, 0.3);
+  border: none;
+}
+
+.book-btn::after {
+  border: none;
+}
+
+.book-btn:active {
+  opacity: 0.9;
+  transform: translateY(2rpx);
+}

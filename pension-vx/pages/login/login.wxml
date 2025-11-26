@@ -1,0 +1,29 @@
+<view class="container">
+  <navigation-bar title="登录" />
+
+  <view class="login-box">
+    <view class="logo-section">
+      <view class="logo-circle"></view>
+      <text class="title">社区养老管理系统</text>
+      <text class="subtitle">温馨服务 · 关爱到家</text>
+    </view>
+
+    <view class="form">
+      <view class="form-item">
+        <text class="label">账号</text>
+        <input class="input" type="text" placeholder="请输入账号" placeholder-style="color: #999" bindinput="onUsernameInput" />
+      </view>
+
+      <view class="form-item">
+        <text class="label">密码</text>
+        <input class="input" type="password" placeholder="请输入密码" placeholder-style="color: #999" bindinput="onPasswordInput" />
+      </view>
+
+      <button class="login-btn" bindtap="handleLogin">登录</button>
+
+      <view class="tips">
+        <text class="tip-text">默认账号：admin / admin123</text>
+      </view>
+    </view>
+  </view>
+</view>

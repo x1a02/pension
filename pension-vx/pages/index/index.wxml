@@ -1,0 +1,96 @@
+<view class="container">
+  <navigation-bar title="首页" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+  <scroll-view class="scrollarea" scroll-y type="list">
+    <view class="content">
+
+      <!-- 仪表盘问候卡片 -->
+      <view class="dashboard-card">
+        <view class="greeting-section">
+          <view class="greeting-left">
+            <text class="greeting-text">{{greeting}}，{{userInfo.realName}}</text>
+            <text class="greeting-date">{{currentDate}}</text>
+          </view>
+          <view class="greeting-right">
+            <text class="greeting-time">{{currentTime}}</text>
+            <view class="weather-icon"></view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 数据统计 - 格栅布局 -->
+      <view class="stats-grid">
+        <view class="stat-card" bindtap="navigateToElderly">
+          <view class="stat-icon stat-icon-elderly"></view>
+          <view class="stat-content">
+            <text class="stat-number">{{elderlyCount}}</text>
+            <text class="stat-label">在册老人</text>
+          </view>
+        </view>
+
+        <view class="stat-card" bindtap="navigateToService">
+          <view class="stat-icon stat-icon-service"></view>
+          <view class="stat-content">
+            <text class="stat-number">{{serviceCount}}</text>
+            <text class="stat-label">服务项目</text>
+          </view>
+        </view>
+
+        <view class="stat-card" bindtap="navigateToActivity">
+          <view class="stat-icon stat-icon-activity"></view>
+          <view class="stat-content">
+            <text class="stat-number">{{activityCount}}</text>
+            <text class="stat-label">社区活动</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 今日关怀 -->
+      <view class="section-card">
+        <view class="section-header">
+          <text class="section-title">今日关怀</text>
+          <text class="section-more" bindtap="navigateToHealth">查看全部</text>
+        </view>
+
+        <view class="task-list">
+          <view class="task-item" wx:for="{{todayTasks}}" wx:key="id" bindtap="handleTaskClick" data-task="{{item}}">
+            <view class="task-icon task-{{item.type}}"></view>
+            <view class="task-content">
+              <text class="task-name">{{item.name}}</text>
+              <text class="task-time">{{item.time}}</text>
+            </view>
+            <view class="task-status">待办</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 近期活动 -->
+      <view class="section-card">
+        <view class="section-header">
+          <text class="section-title">近期活动</text>
+          <text class="section-more" bindtap="navigateToActivity">查看更多</text>
+        </view>
+
+        <view class="activity-list">
+          <view class="activity-item" wx:for="{{recentActivities}}" wx:key="id" bindtap="viewActivityDetail" data-id="{{item.id}}">
+            <view class="activity-date-box">
+              <text class="activity-day">{{item.activityDate.substring(8, 10)}}</text>
+              <text class="activity-month">{{item.activityDate.substring(5, 7)}}月</text>
+            </view>
+            <view class="activity-content">
+              <text class="activity-name">{{item.activityName}}</text>
+              <text class="activity-location">{{item.location}}</text>
+            </view>
+          </view>
+
+          <view class="empty-warm" wx:if="{{recentActivities.length === 0}}">
+            <view class="empty-illustration"></view>
+            <text class="empty-text">今日暂无安排</text>
+            <text class="empty-hint">去陪陪老人们吧</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>

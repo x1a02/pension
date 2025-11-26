@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.x1a02.pension.mapper.HealthRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.x1a02.pension.entity.HealthRecord">
+        <id column="id" property="id"/>
+        <result column="elderly_id" property="elderlyId"/>
+        <result column="record_date" property="recordDate"/>
+        <result column="blood_pressure" property="bloodPressure"/>
+        <result column="heart_rate" property="heartRate"/>
+        <result column="blood_sugar" property="bloodSugar"/>
+        <result column="temperature" property="temperature"/>
+        <result column="weight" property="weight"/>
+        <result column="notes" property="notes"/>
+        <result column="data_source" property="dataSource"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.x1a02.pension.entity.HealthRecord" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_health_record (elderly_id, record_date, blood_pressure, heart_rate,
+            blood_sugar, temperature, weight, notes, data_source)
+        VALUES (#{elderlyId}, #{recordDate}, #{bloodPressure}, #{heartRate},
+            #{bloodSugar}, #{temperature}, #{weight}, #{notes}, #{dataSource})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM tb_health_record WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM tb_health_record WHERE id = #{id}
+    </select>
+
+    <select id="selectByElderlyId" resultMap="BaseResultMap">
+        SELECT * FROM tb_health_record WHERE elderly_id = #{elderlyId} ORDER BY record_date DESC
+    </select>
+
+    <select id="selectByElderlyIdAndDateRange" resultMap="BaseResultMap">
+        SELECT * FROM tb_health_record
+        WHERE elderly_id = #{elderlyId}
+        AND record_date BETWEEN #{startDate} AND #{endDate}
+        ORDER BY record_date DESC
+    </select>
+
+    <select id="selectLatestByElderlyId" resultMap="BaseResultMap">
+        SELECT * FROM tb_health_record
+        WHERE elderly_id = #{elderlyId}
+        ORDER BY record_date DESC, create_time DESC
+        LIMIT 1
+    </select>
+
+</mapper>

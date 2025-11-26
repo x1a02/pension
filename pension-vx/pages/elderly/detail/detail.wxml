@@ -1,0 +1,122 @@
+<view class="container">
+  <navigation-bar title="老人详情" color="black" background="#FFF"></navigation-bar>
+
+  <scroll-view class="scrollarea" scroll-y type="list">
+    <view class="content" wx:if="{{elderly}}">
+
+      <!-- 头部个人信息卡片 -->
+      <view class="profile-card">
+        <view class="avatar-section">
+          <view class="large-avatar">
+            <text class="large-avatar-text">{{elderly.name.charAt(0)}}</text>
+          </view>
+          <view class="profile-name-area">
+            <text class="profile-name">{{elderly.name}}</text>
+            <view class="profile-tags">
+              <text class="profile-tag">{{elderly.age}}岁</text>
+              <text class="profile-tag">{{elderly.gender === 1 ? '男' : '女'}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 基本信息 -->
+      <view class="section-card">
+        <view class="section-title">
+          <text class="title-icon">📋</text>
+          <text class="title-text">基本信息</text>
+        </view>
+
+        <view class="info-grid">
+          <view class="grid-item">
+            <text class="item-label">姓名</text>
+            <text class="item-value">{{elderly.name}}</text>
+          </view>
+          <view class="grid-item">
+            <text class="item-label">性别</text>
+            <text class="item-value">{{elderly.gender === 1 ? '男' : '女'}}</text>
+          </view>
+          <view class="grid-item">
+            <text class="item-label">年龄</text>
+            <text class="item-value">{{elderly.age}}岁</text>
+          </view>
+          <view class="grid-item">
+            <text class="item-label">身份证</text>
+            <text class="item-value">{{elderly.idCard || '未填写'}}</text>
+          </view>
+        </view>
+
+        <view class="info-row" wx:if="{{elderly.phone}}">
+          <text class="row-label">联系电话</text>
+          <text class="row-value phone-value" bindtap="makeCall">{{elderly.phone}}</text>
+        </view>
+
+        <view class="info-row" wx:if="{{elderly.address}}">
+          <text class="row-label">居住地址</text>
+          <text class="row-value">{{elderly.address}}</text>
+        </view>
+      </view>
+
+      <!-- 紧急联系人 -->
+      <view class="section-card">
+        <view class="section-title">
+          <text class="title-icon">🚨</text>
+          <text class="title-text">紧急联系人</text>
+        </view>
+
+        <view class="emergency-contact">
+          <view class="contact-row">
+            <text class="contact-label">联系人</text>
+            <text class="contact-value">{{elderly.emergencyContact || '未填写'}}</text>
+          </view>
+          <view class="contact-row" wx:if="{{elderly.emergencyPhone}}">
+            <text class="contact-label">电话</text>
+            <text class="contact-value phone-value" bindtap="callEmergencyContact">{{elderly.emergencyPhone}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 健康状况 -->
+      <view class="section-card" wx:if="{{elderly.healthStatus}}">
+        <view class="section-title">
+          <text class="title-icon">💊</text>
+          <text class="title-text">健康状况</text>
+        </view>
+
+        <view class="health-status-box">
+          <text class="health-status-text">{{elderly.healthStatus}}</text>
+        </view>
+      </view>
+
+      <!-- 最近健康记录 -->
+      <view class="section-card">
+        <view class="section-header">
+          <view class="section-title">
+            <text class="title-icon">📊</text>
+            <text class="title-text">最近健康记录</text>
+          </view>
+          <text class="view-all-btn" bindtap="viewAllHealthRecords">查看全部 →</text>
+        </view>
+
+        <view class="health-records">
+          <view class="health-record-item" wx:for="{{healthRecords}}" wx:key="id">
+            <view class="record-date">
+              <text class="date-icon">📅</text>
+              <text class="date-text">{{item.recordDate}}</text>
+            </view>
+            <view class="record-data">
+              <text class="data-badge" wx:if="{{item.bloodPressure}}">血压 {{item.bloodPressure}}</text>
+              <text class="data-badge" wx:if="{{item.heartRate}}">心率 {{item.heartRate}}</text>
+              <text class="data-badge" wx:if="{{item.bloodSugar}}">血糖 {{item.bloodSugar}}</text>
+            </view>
+          </view>
+
+          <view class="empty-health" wx:if="{{healthRecords.length === 0}}">
+            <text class="empty-health-text">暂无健康记录</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>

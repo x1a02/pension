@@ -1,0 +1,30 @@
+<view class="container">
+  <navigation-bar title="服务详情" color="black" background="#FFF"></navigation-bar>
+
+  <scroll-view class="scrollarea" scroll-y type="list">
+    <view class="content" wx:if="{{service}}">
+      <view class="service-header">
+        <text class="service-name">{{service.serviceName}}</text>
+        <view class="service-price">
+          <text class="price-symbol">¥</text>
+          <text class="price-value">{{service.price}}</text>
+          <text class="price-unit">/次</text>
+        </view>
+      </view>
+
+      <view class="service-info">
+        <view class="info-item">
+          <text class="label">服务时长</text>
+          <text class="value">{{service.duration}}分钟</text>
+        </view>
+
+        <view class="info-item">
+          <text class="label">服务介绍</text>
+          <text class="value">{{service.serviceDesc}}</text>
+        </view>
+      </view>
+
+      <button class="book-btn" bindtap="handleBook">立即预约</button>
+    </view>
+  </scroll-view>
+</view>
