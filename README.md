@@ -1,4 +1,3 @@
-软件工程的大作业
 1、下载到本地后，分别用idea打开pension-java文件夹
 <img width="1812" height="1260" alt="image" src="https://github.com/user-attachments/assets/afd7308a-64a6-4c8c-ab3b-062ccdfcdd3d" />
 navicat执行pension-java目录下的pension.sql文件内容
