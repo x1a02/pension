@@ -13,7 +13,7 @@ Page({
   },
 
   loadActivityDetail(id) {
-    wx.showLoading({ title: 'Loading...' })
+    wx.showLoading({ title: '加载中...' })
 
     request({
       url: '/activity/get/' + id,
@@ -30,7 +30,7 @@ Page({
 
   handleRegister() {
     wx.showToast({
-      title: 'Registration feature coming soon',
+      title: '报名功能开发中',
       icon: 'none'
     })
   }
